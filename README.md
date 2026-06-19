@@ -8,7 +8,7 @@ An FSM-based control unit generates the required control signals.
 The system follows the Fetch–Decode–Execute cycle to process instructions.
 It serves as a platform for learning digital system design and RTL development.
 The project also provides practical experience with FPGA implementation and processor architecture.
----
+
 
 ## Problem Statement
 
