@@ -1,0 +1,272 @@
+`timescale 1ns / 1ps
+
+module control_unit(
+input clock,
+input reset,
+input [3:0] cu_in,
+
+output reg co,
+output reg ce,
+output reg cl,
+
+output reg ai,
+output reg ao,
+output reg bi,
+
+output reg mi,
+output reg ri,
+output reg ro,
+
+output reg ii,
+output reg io,
+
+output reg fe,
+output reg oi,
+
+output reg add,
+output reg sub,
+output reg xra,
+output reg xna,
+output reg ana,
+output reg ora,
+output reg diva,
+output reg alo,
+
+output reg hlt
+);
+
+reg [2:0] t_state;
+
+localparam T0 = 3'b000,
+           T1 = 3'b001,
+           T2 = 3'b010,
+           T3 = 3'b011,
+           T4 = 3'b100,
+           T5 = 3'b101;
+
+// Opcodes
+localparam LDA  = 4'b0001;
+localparam ADD  = 4'b0010;
+localparam SUB  = 4'b0011;
+localparam DIVA = 4'b0100;
+localparam ANA  = 4'b0101;
+localparam ORA  = 4'b0110;
+localparam XRA  = 4'b0111;
+localparam XNA  = 4'b1000;
+localparam STA  = 4'b1001;
+localparam OUT  = 4'b1010;
+localparam HLT  = 4'b1011;
+
+//
+// T-State Counter
+//
+always @(posedge clock or posedge reset)
+begin
+    if(reset)
+        t_state <= T0;
+    else if(!hlt)
+    begin
+        case(t_state)
+            T0: t_state <= T1;
+            T1: t_state <= T2;
+            T2: t_state <= T3;
+            T3: t_state <= T4;
+            T4: t_state <= T5;
+            T5: t_state <= T0;
+            default: t_state <= T0;
+        endcase
+    end
+end
+
+//
+// Control Logic
+//
+always @(*)
+begin
+
+    // Default all signals LOW
+    co   = 0;
+    ce   = 0;
+    cl   = 0;
+
+    ai   = 0;
+    ao   = 0;
+    bi   = 0;
+
+    mi   = 0;
+    ri   = 0;
+    ro   = 0;
+
+    ii   = 0;
+    io   = 0;
+
+    fe   = 0;
+    oi   = 0;
+
+    add  = 0;
+    sub  = 0;
+    xra  = 0;
+    xna  = 0;
+    ana  = 0;
+    ora  = 0;
+    diva = 0;
+    alo  = 0;
+
+    hlt  = 0;
+
+    case(t_state)
+
+    //
+    // FETCH
+    //
+    T0:
+    begin
+        co = 1;
+        mi = 1;
+    end
+
+    T1:
+    begin
+        ro = 1;
+        ii = 1;
+        ce = 1;
+    end
+
+    T2:
+    begin
+        // Decode
+    end
+
+    //
+    // EXECUTE
+    //
+    T3:
+    begin
+        case(cu_in)
+
+        LDA,
+        ADD,
+        SUB,
+        DIVA,
+        ANA,
+        ORA,
+        XRA,
+        XNA,
+        STA:
+        begin
+            io = 1;
+            mi = 1;
+        end
+
+        OUT:
+        begin
+            ao = 1;
+            oi = 1;
+        end
+
+        HLT:
+        begin
+            hlt = 1;
+        end
+
+        endcase
+    end
+
+    T4:
+    begin
+        case(cu_in)
+
+        LDA:
+        begin
+            ro = 1;
+            ai = 1;
+        end
+
+        ADD,
+        SUB,
+        DIVA,
+        ANA,
+        ORA,
+        XRA,
+        XNA:
+        begin
+            ro = 1;
+            bi = 1;
+        end
+
+        STA:
+        begin
+            ao = 1;
+            ri = 1;
+        end
+
+        endcase
+    end
+
+    T5:
+    begin
+        case(cu_in)
+
+        ADD:
+        begin
+            add = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        SUB:
+        begin
+            sub = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        DIVA:
+        begin
+            diva = 1;
+            alo  = 1;
+            ai   = 1;
+            fe   = 1;
+        end
+
+        ANA:
+        begin
+            ana = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        ORA:
+        begin
+            ora = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        XRA:
+        begin
+            xra = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        XNA:
+        begin
+            xna = 1;
+            alo = 1;
+            ai  = 1;
+            fe  = 1;
+        end
+
+        endcase
+    end
+
+    endcase
+end
+
+endmodule
