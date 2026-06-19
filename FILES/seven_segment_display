@@ -6,15 +6,11 @@ module seven_segment_display(
 );
 
 reg [3:0] hundreds, tens, ones;
-
-// Binary to BCD conversion
 always @(*) begin
     hundreds = out_data / 100;
     tens     = (out_data % 100) / 10;
     ones     = out_data % 10;
 end
-
-// Hundreds digit
 always @(*) begin
     case(hundreds)
         4'd0: seg_hundreds = 7'b1000000;
@@ -30,8 +26,6 @@ always @(*) begin
         default: seg_hundreds = 7'b1111111;
     endcase
 end
-
-// Tens digit
 always @(*) begin
     case(tens)
         4'd0: seg_tens = 7'b1000000;
@@ -47,8 +41,6 @@ always @(*) begin
         default: seg_tens = 7'b1111111;
     endcase
 end
-
-// Ones digit
 always @(*) begin
     case(ones)
         4'd0: seg_ones = 7'b1000000;
