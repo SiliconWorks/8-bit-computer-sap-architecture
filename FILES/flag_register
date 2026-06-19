@@ -1,0 +1,16 @@
+module flag_register(
+    input clk,
+    input reset,
+    input fe,       
+    input carry_flag,
+    input zero_flag,
+    output reg [1:0] flags
+);
+always @(posedge clk or posedge reset)
+begin
+    if (reset)
+        flags <= 2'b00;
+    else if (fe)
+        flags <= {carry_flag, zero_flag};
+end
+endmodule
