@@ -18,3 +18,36 @@ This project was developed as a learning platform for understanding digital syst
 | Simulator | Vivado Simulator |
 | Verification Method | Self-Checking Testbench |
 
+## SAP-1 Computer Operational Principle
+
+The SAP-1 Computer operates using the **Fetch → Decode → Execute** cycle controlled by a Finite State Machine (FSM).
+
+### ➤ FETCH
+
+* The Program Counter (PC) provides the address of the next instruction.
+* The instruction is fetched from memory and loaded into the Instruction Register (IR).
+* The PC increments to the next address.
+
+### ➤ DECODE
+
+* The Control Unit decodes the instruction stored in the IR.
+* Required control signals are generated for execution.
+
+### ➤ EXECUTE
+
+The operation depends on the instruction:
+
+* **LDA** – Load data from memory into the Accumulator.
+* **ADD** – Add memory data to the Accumulator.
+* **SUB** – Subtract memory data from the Accumulator.
+* **OUT** – Transfer the Accumulator value to the Output Register.
+* **HLT** – Stop program execution.
+
+### ➤ DATA TRANSFER
+
+* All modules communicate through a common 8-bit bus.
+* Data moves between registers, memory, and the ALU based on control signals.
+
+### ➤ PROGRAM FLOW
+
+The computer continuously fetches, decodes, and executes instructions until a **HLT** instruction is encountered.
