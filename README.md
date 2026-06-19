@@ -51,3 +51,33 @@ The operation depends on the instruction:
 #### Program Flow
 
 * The computer continuously fetches, decodes, and executes instructions until a **HLT** instruction is encountered.
+## Control Unit Timing States (T-Cycles)
+
+The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that generates sequential timing states (T0–T5). These states control the fetch and execution of instructions by activating the required control signals.
+
+```text
+T0 → T1 → T2 → T3 → T4 → T5
+↑                          ↓
+└──────────────────────────┘
+```
+
+### State Description
+
+* **T0** – Load memory address from the Program Counter (PC) into the Memory Address Register (MAR).
+* **T1** – Fetch instruction from memory into the Instruction Register (IR) and increment the PC.
+* **T2** – Decode the instruction opcode.
+* **T3** – Begin instruction execution.
+* **T4** – Continue instruction execution (if required).
+* **T5** – Complete instruction execution and prepare for the next instruction.
+
+### Instruction Execution
+
+| Instruction | T3           | T4              | T5              |
+| ----------- | ------------ | --------------- | --------------- |
+| **LDA**     | Load Address | Read Data       | Load A Register |
+| **ADD**     | Load Address | Load B Register | A ← A + B       |
+| **SUB**     | Load Address | Load B Register | A ← A − B       |
+| **OUT**     | OUT ← A      | —               | —               |
+| **HLT**     | Halt CPU     | —               | —               |
+
+The FSM continuously cycles through the timing states until a **HLT** instruction is encountered.
