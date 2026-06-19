@@ -2,9 +2,8 @@
 
 module top_8bit(
     input clock,reset,
-    output [6:0] seg_hundreds,
-    output [6:0] seg_tens,
-    output [6:0] seg_ones
+    output [7:0] an,
+    output [7:0] seg
 );
 wire [7:0] bus;
 wire co,ce,cl;
@@ -124,11 +123,22 @@ output_register OUTREG(
     .out_data(out_data)
 );
 
+wire [6:0] seg_hundreds_w;
+wire [6:0] seg_tens_w;
+wire [6:0] seg_ones_w;
 seven_segment_display DISP(
     .out_data(out_data),
-    .seg_hundreds(seg_hundreds),
-    .seg_tens(seg_tens),
-    .seg_ones(seg_ones)
+    .seg_hundreds(seg_hundreds_w),
+    .seg_tens(seg_tens_w),
+    .seg_ones(seg_ones_w)
+);
+display_scanner SCAN(
+    .clk(clock),
+    .seg_hundreds(seg_hundreds_w),
+    .seg_tens(seg_tens_w),
+    .seg_ones(seg_ones_w),
+    .an(an),
+    .seg(seg)
 );
 
 control_unit CU(
