@@ -135,15 +135,15 @@ The operation depends on the instruction:
 #### Program Flow
 
 * The computer continuously fetches, decodes, and executes instructions until a **HLT** instruction is encountered.
+
+---
+
+
 ## Control Unit Timing States (T-Cycles)
 
 The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that generates sequential timing states (T0–T5). These states control the fetch and execution of instructions by activating the required control signals.
 
-```text
-T0 → T1 → T2 → T3 → T4 → T5
-↑                          ↓
-└──────────────────────────┘
-```
+
 
 ### State Description
 
@@ -165,3 +165,13 @@ T0 → T1 → T2 → T3 → T4 → T5
 | **HLT**     | Halt CPU     | —               | —               |
 
 The FSM continuously cycles through the timing states until a **HLT** instruction is encountered.
+
+
+### Consclusion
+
+## Conclusion
+
+The 8-bit SAP-1 computer was successfully designed and implemented using Verilog HDL. The project demonstrated the fundamental concepts of computer architecture, including instruction fetching, decoding, execution, and data transfer. By integrating modules such as the PC, registers, ALU, RAM, and FSM-based control unit, a functional processor was realized. This work provided practical experience in RTL design, digital system integration, and FPGA-based processor implementation.
+
+
+---
