@@ -166,6 +166,7 @@ The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that ge
 
 The FSM continuously cycles through the timing states until a **HLT** instruction is encountered.
 
+---
 
 ### Conclusion
 
