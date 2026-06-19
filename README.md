@@ -48,6 +48,8 @@ REGISTER / ALU OPERATION
 
 The processor executes instructions sequentially using a Finite State Machine (FSM)-based Control Unit and an 8-bit shared bus architecture. Correct operation is maintained through synchronized register transfers, controlled memory access, and timing-state (T-cycle) based instruction execution.
 
+---
+
 ## Tools & Hardware
 
 | Category | Specification |
