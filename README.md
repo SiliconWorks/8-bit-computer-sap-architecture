@@ -158,3 +158,4 @@ T0 → T1 → T2 → T3 → T4 → T5
 | **HLT**     | Halt CPU     | —               | —               |
 
 The FSM continuously cycles through the timing states until a **HLT** instruction is encountered.
+a
