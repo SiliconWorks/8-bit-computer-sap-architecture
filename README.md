@@ -141,11 +141,14 @@ The operation depends on the instruction:
 
 ## Control Unit Timing States (T-Cycles)
 
+**State diagram for T-cycles**
+
+<img width="1172" height="1342" alt="image" src="https://github.com/user-attachments/assets/da300548-ea0f-4ee3-b491-b4a14ad79c55" />
+
+
 The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that generates sequential timing states (T0–T5). These states control the fetch and execution of instructions by activating the required control signals.
 
-
-
-### State Description
+**State Description**
 
 * **T0** – Load memory address from the Program Counter (PC) into the Memory Address Register (MAR).
 * **T1** – Fetch instruction from memory into the Instruction Register (IR) and increment the PC.
@@ -153,6 +156,7 @@ The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that ge
 * **T3** – Begin instruction execution.
 * **T4** – Continue instruction execution (if required).
 * **T5** – Complete instruction execution and prepare for the next instruction.
+---
 
 ### Instruction Execution
 
