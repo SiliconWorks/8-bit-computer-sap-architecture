@@ -19,6 +19,7 @@ The project also provides practical experience with FPGA implementation and proc
 -  [Instruction Set Architecture (ISA)](#instruction-set-architecture-isa)
 -  [SAP-1 Computer Operational Principle](#sap-1-computer-operational-principle)
 -  [Control Unit Timing States (T-Cycles)](#control-unit-timing-states-t-cycles)
+-  [Contributors](#contributors)
 
 ## Problem Statement
 
