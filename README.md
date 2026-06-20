@@ -15,6 +15,7 @@ The project also provides practical experience with FPGA implementation and proc
 - [Project Overview](#project-overview)
 - [Problem Statement](#problem-statement)
 -  [Tools & Hardware](#tools--hardware)
+-  [8-Bit Computer Block Diagram](#8-bit-computer-block-diagram)
 
 ## Problem Statement
 
@@ -189,6 +190,7 @@ The FSM continuously cycles through the timing states until a **HLT** instructio
 🔗 [LinkedIn](https://linkedin.com/in/username)
 
 **Arut selvan B**, Bannari Amman Institute of Technology
+
 🔗 [LinkedIn](https://www.linkedin.com/in/arut-selvan-baskaran-161922330/)
 
 
