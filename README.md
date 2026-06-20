@@ -89,8 +89,7 @@ The 8-bit SAP Computer supports the following instructions:
 | ------ | ------------- | ------------------------------------------------ |
 | `0001` | **LDA addr**  | Load Accumulator (A) from memory                 |
 | `0010` | **ADD addr**  | Add memory data to Accumulator (A)               |
-| `0011` | **SUB addr**  | Subtract memory data from Accumulator (A)        |
-| `0100` | **DIV addr**  | Divide Accumulator (A) using memory operand      |
+| `0011` | **SUB addr**  | Subtract memory data from Accumulator (A)        | 
 | `0101` | **AND addr**  | Perform bitwise AND operation                    |
 | `0110` | **OR addr**   | Perform bitwise OR operation                     |
 | `0111` | **XOR addr**  | Perform bitwise XOR operation                    |
