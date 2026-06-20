@@ -146,7 +146,8 @@ The operation depends on the instruction:
 
 **State diagram for T-cycles**
 
-<img width="1172" height="1342" alt="image" src="https://github.com/user-attachments/assets/da300548-ea0f-4ee3-b491-b4a14ad79c55" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9bcf3f64-e48a-4b07-96d6-781bc3cb3a14" />
+
 
 
 The SAP-1 Control Unit is implemented using a Finite State Machine (FSM) that generates sequential timing states (T0–T5). These states control the fetch and execution of instructions by activating the required control signals.
