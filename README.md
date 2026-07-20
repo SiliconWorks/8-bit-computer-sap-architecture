@@ -202,17 +202,7 @@ The FSM continuously cycles through the timing states until a **HLT** instructio
 
 ---
 
-We are grateful to our VLSI faculty for his constant support and valuable guidance throughout this project.
 
-### **Dr. Elango Sekar**
-🔗 [LinkedIn](https://linkedin.com/in/username) | 🔗 [GitHub](https://github.com/username)
-
-Associate Professor, Department of ECE,  
-Bannari Amman Institute of Technology.
-
-We also extend our sincere thanks to the **BIT – Centre for SoC and FPGA Design** for providing an excellent learning environment and technical support throughout this work.
-
-🔗 [LinkedIn](https://linkedin.com/company/bit-centre-for-soc-and-fpga-design)
 
 ### Conclusion
 
